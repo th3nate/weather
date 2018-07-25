@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+// custom variables
+@import 'assets/scss/variables';
+// custom material template
+@import 'assets/scss/palette';
+// custom fonts
+@import 'assets/scss/fonts';
+// custom material icons
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+@import '~bootstrap/scss/bootstrap';
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+body {
+  font-family: 'LatoWeb' !important;
+  padding-top: 100px;
+}
+
+.accent-color {
+  color: $accent-color;
+}
+
+.accent-color-dark {
+  color: $accent-color-dark;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.primary-color-dark {
+  color: $primary-color-dark;
+}
+
+.divider-h {
+  border-right: 1px solid $divider-color;
+  margin: 0 15px;
+}
+

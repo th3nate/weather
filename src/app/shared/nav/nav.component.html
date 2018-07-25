@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top gradient">
+  <a class="navbar-brand" [routerLink]="['/']" href="javascript: void(0)"><i class="material-icons">wb_sunny</i> Weather</a>
+  <button (click)="toggleMobileManu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngClass]="{ 'in': mobileMenuToggle }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']">
+        <a class="nav-link" href="javascript: void(0)">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/list']">
+        <a class="nav-link" href="javascript: void(0)">List</a>
+      </li>
+    </ul>
+  </div>
+</nav>
