@@ -20,25 +20,26 @@
   <div>
     <div *ngIf="!inProgress">
       <div class="row">
-        <div class="col-md-12">
-          <label for="gender">Please choose your gender</label>
-          <select id="gender" class="custom-select d-block w-100" (change)="changeGender($event)">
-            <option *ngFor="let item of genderList" [value]="item.value" [selected]="item.value === gender">
-              {{item.name}}
-            </option>
-          </select><br>
-        </div>
-      </div>
-      <div class="row">
         <div *ngFor="let item of first" class="col-md-12">
           <div class="card mb-1 box-shadow">
             <div class="card-top">
               <h2 class="name">The best weather is in <strong>{{item.name}}</strong><br>with temperatures of <strong>{{item.temp}}<sup>&#8451;</sup></strong> and
                 <strong>{{item.humidity}}%</strong> humidity</h2>
             </div>
-          </div>
+          </div><br>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="gender">Please choose your gender</label>
+          <select id="gender" class="custom-select d-block w-100" (change)="changeGender($event)">
+            <option *ngFor="let item of genderList" [value]="item.value" [selected]="item.value === gender">
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
       <div class="heading">
         <h3>More results</h3>
       </div>
