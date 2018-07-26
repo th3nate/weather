@@ -20,6 +20,16 @@
   <div>
     <div *ngIf="!inProgress">
       <div class="row">
+        <div class="col-md-12">
+          <label for="gender">Please choose your gender</label>
+          <select id="gender" class="custom-select d-block w-100" (change)="changeGender($event)">
+            <option *ngFor="let item of genderList" [value]="item.value" [selected]="item.value === gender">
+              {{item.name}}
+            </option>
+          </select><br>
+        </div>
+      </div>
+      <div class="row">
         <div *ngFor="let item of first" class="col-md-12">
           <div class="card mb-1 box-shadow">
             <div class="card-top">
@@ -41,7 +51,6 @@
                 <p class="card-text">Temp: <strong>{{item.temp}}&#8451;</strong><br>Humidity:
                   <strong>{{item.humidity}}%</strong></p>
               </div>
-
             </div>
           </div>
         </div>

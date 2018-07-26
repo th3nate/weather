@@ -15,6 +15,8 @@ export class ListComponent implements OnInit {
   public weather    = null;
   public first      = null;
   public rest       = null;
+  public gender     = null;
+  public genderList = [{name: 'Male', value: 'male'}, {name: 'Female', value: 'female'}];
   
   constructor(private apiService: ApiService, private userService: UserService) { }
   
@@ -26,29 +28,28 @@ export class ListComponent implements OnInit {
         console.log(weather);
       } else {
         this.inProgress          = false;
+        this.userService.gender  = 'male';
+        this.gender              = this.userService.gender;
         const parsedData         = this.parseData(weather);
-        this.userService.weather = parsedData; // save locally
-        
-        this.first = pullAt(parsedData, [0]);
-        this.rest  = parsedData;
-        
-        this.userService.first = this.first; // save locally
-        this.userService.rest  = this.rest; // save locally
-        // console.log(parsedData);
+        const sortedData         = this.sort(parsedData);
+        this.userService.weather = sortedData;
+        this.updateList(sortedData);
       }
     } else { // if data is available locally
       this.inProgress = false;
+      this.gender     = this.userService.gender;
       this.first      = this.userService.first;
       this.rest       = this.userService.rest;
-      // console.log(this.userService.userData);
     }
   }
   
   parseData(data: any) {
-    const array  = [];
-    const mapped = map(data.list, (x) => {
+    return map(data.list, (x) => {
       return {name: x.name, temp: x.main.temp, humidity: x.main.humidity};
     });
+  }
+  
+  sort(data: any) {
     
     const customSort = (arr, ...fields) => {
       arr.sort((first, second) => {
@@ -64,7 +65,28 @@ export class ListComponent implements OnInit {
       return arr;
     };
     
-    return customSort(mapped, {field: 'temp', number: 21}, {field: 'humidity', number: 50});
+    return customSort(data, {field: 'temp', number: this.gender === 'female' ? 21 : 20}, {
+      field : 'humidity',
+      number: 50
+    });
+    
+  }
+  
+  changeGender(event) {
+    this.inProgress         = true;
+    this.userService.gender = event.currentTarget.selectedOptions[0].value;
+    this.gender             = this.userService.gender;
+    const sortedData        = this.sort(Object.assign([], this.userService.weather));
+    this.updateList(sortedData);
+    this.inProgress = false;
+  }
+  
+  updateList(data) {
+    this.first = pullAt(data, [0]);
+    this.rest  = data;
+    
+    this.userService.first = this.first; // save locally
+    this.userService.rest  = this.rest; // save locally
   }
   
   async ngOnInit() {

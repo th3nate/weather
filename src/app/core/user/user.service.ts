@@ -34,4 +34,12 @@ export class UserService {
     this.data['rest'] = val;
   }
   
+  get gender() {
+    return this.data['gender'];
+  }
+  
+  set gender(val) {
+    this.data['gender'] = val;
+  }
+  
 }
