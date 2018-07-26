@@ -76,14 +76,15 @@ export class ListComponent implements OnInit {
     this.inProgress         = true;
     this.userService.gender = event.currentTarget.selectedOptions[0].value;
     this.gender             = this.userService.gender;
-    const sortedData        = this.sort(Object.assign([], this.userService.weather));
+    const sortedData        = this.sort(this.userService.weather);
     this.updateList(sortedData);
     this.inProgress = false;
   }
   
   updateList(data) {
-    this.first = pullAt(data, [0]);
-    this.rest  = data;
+    const arr  = JSON.parse(JSON.stringify(data));
+    this.first = pullAt(arr, [0]);
+    this.rest  = arr;
     
     this.userService.first = this.first; // save locally
     this.userService.rest  = this.rest; // save locally
