@@ -1,4 +1,8 @@
 @import '../../assets/scss/palette'; // custom material template
+.card.mb-3 {
+  margin-bottom: 2rem !important;
+}
+
 .card-top {
   position: relative;
   height: 200px;
@@ -13,7 +17,8 @@
     transform: translate(-50%, -50%);
   }
 }
-.spinner-wrap{
+
+.spinner-wrap {
   height: 155px;
   width: 100%;
   .spinner {
@@ -25,6 +30,7 @@
     transform: translate(-50%, -50%);
   }
 }
+
 // Loader
 .lds-roller {
   display: inline-block;
